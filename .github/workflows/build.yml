@@ -1,0 +1,41 @@
+name: Build and analyse
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyse:
+    name: PHPStan max on Axolotl-PM 5.51.2
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Axolotl-PM PHP 8.4
+        uses: axolotl-pm/setup-php-action@b8c3f9add4f2ad4a5e2624a1112aba899ee8db0e # 1.0.0
+        with:
+          php-version: '8.4'
+          install-path: ./.php-bin
+          pm-version-major: '5'
+
+      - name: Install locked dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress --ignore-platform-req=ext-webrtc
+
+      - name: Validate Composer metadata
+        run: composer validate --strict
+
+      - name: Run PHPStan max
+        run: composer analyse
+
+  build:
+    uses: AxolotlBucketLabs/DevTools/.github/workflows/build-virion.yml@c2eb715205a9dcb485a4ecabd17512f32f24d5d7 # DevTools v4.1.1
+    with:
+      project: .
+      php-version: '8.4'
