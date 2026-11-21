@@ -29,12 +29,11 @@ abstract class Form implements \pocketmine\form\Form {
     public const FORM_TYPE_MODAL = "modal";
     public const FORM_TYPE_CUSTOM = "custom_form";
 
-    /** @var mixed[] */
+    /** @var array<string, mixed> */
     protected array $data = [];
 
     /** @var Closure(Player $player, FormResponse $response): void */
-    protected Closure $callback;
-    /** @var bool */
+    protected ?Closure $callback = null;
     protected bool $ignoreInvalidResponse;
 
     public function __construct(string $formType, bool $ignoreInvalidResponse = false) {
@@ -56,6 +55,17 @@ abstract class Form implements \pocketmine\form\Form {
         $this->callback = $callback;
     }
 
+    /** @param array<string, mixed> $value */
+    protected function appendData(string $key, array $value): void {
+        $items = $this->data[$key] ?? [];
+        if(!is_array($items)) {
+            throw new \LogicException("Form data field \"{$key}\" must be an array.");
+        }
+
+        $items[] = $value;
+        $this->data[$key] = $items;
+    }
+
     final public function handleResponse(Player $player, $data): void {
         $response = new FormResponse($data);
 
@@ -63,7 +73,7 @@ abstract class Form implements \pocketmine\form\Form {
             return;
         }
 
-        if(!isset($this->callback)) {
+        if($this->callback === null) {
             return;
         }
 
