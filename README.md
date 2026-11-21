@@ -1,9 +1,10 @@
 # libpmform
 
-libpmform is a small form library for Axolotl-PM plugins. It is a virion, not a standalone plugin. Load the source from the server's `virions/` directory during development or build a virion PHAR with DevTools for deployment.
+This is a maintained continuation of [CzechPMDevs/libpmform](https://github.com/CzechPMDevs/libpmform) that provides a small form library for Axolotl-PM plugins. It is a virion, not a standalone plugin. Load the source from the server's `virions/` directory during development or build a virion PHAR with DevTools for deployment.
 
-[![Build](https://github.com/CzechPMDevs/libpmform/actions/workflows/build.yml/badge.svg)](https://github.com/CzechPMDevs/libpmform/actions/workflows/build.yml)
+[![Build](https://github.com/AxolotlBucketLabs/libpmform/actions/workflows/build.yml/badge.svg)](https://github.com/AxolotlBucketLabs/libpmform/actions/workflows/build.yml)
 [![Apache-2.0 license](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Discord](https://img.shields.io/discord/1568295845374206052?label=Discord&logo=discord&logoColor=white&color=5865F2)](https://discord.gg/Pk4FrNvHnM)
 
 ## Requirements
 
