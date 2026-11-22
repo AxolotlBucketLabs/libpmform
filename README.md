@@ -3,6 +3,7 @@
 This is a maintained continuation of [CzechPMDevs/libpmform](https://github.com/CzechPMDevs/libpmform) that provides a small form library for Axolotl-PM plugins. It is a virion, not a standalone plugin. Load the source from the server's `virions/` directory during development or build a virion PHAR with DevTools for deployment.
 
 [![Build](https://github.com/AxolotlBucketLabs/libpmform/actions/workflows/build.yml/badge.svg)](https://github.com/AxolotlBucketLabs/libpmform/actions/workflows/build.yml)
+[![Latest release](https://img.shields.io/github/v/release/AxolotlBucketLabs/libpmform)](https://github.com/AxolotlBucketLabs/libpmform/releases/latest)
 [![Apache-2.0 license](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Discord](https://img.shields.io/discord/1568295845374206052?label=Discord&logo=discord&logoColor=white&color=5865F2)](https://discord.gg/Pk4FrNvHnM)
 
@@ -31,7 +32,7 @@ server/
         └── src/
 ```
 
-For deployment, build a virion PHAR from the repository root with the DevTools CLI. Install DevTools' locked dependencies first.
+For deployment, download `libpmform.phar` from the [latest GitHub release](https://github.com/AxolotlBucketLabs/libpmform/releases/latest). To build it locally, install DevTools' locked dependencies first.
 
 ```sh
 composer install --working-dir=/path/to/DevTools --no-interaction --no-progress --no-scripts --no-plugins
